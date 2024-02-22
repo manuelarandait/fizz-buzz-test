@@ -19,8 +19,8 @@ migrate: ## Runs backend commands
 	docker exec -it fizz-buzz-php-symfony symfony console doctrine:database:create
 
 create-database-test: ## Runs backend commands
-	docker exec -it fizz-buzz-php-symfony symfony console doctrine:database:create --env=test
-	docker exec -it fizz-buzz-php-symfony symfony console doctrine:schema:update --force --env=test
+	docker exec fizz-buzz-php-symfony symfony console doctrine:database:create --env=test
+	docker exec fizz-buzz-php-symfony symfony console doctrine:schema:update --force --env=test
 
 test: ## Runs backend commands
 	docker exec fizz-buzz-php-symfony php bin/phpunit
