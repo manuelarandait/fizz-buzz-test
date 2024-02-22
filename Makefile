@@ -13,7 +13,7 @@ build: ## Rebuilds all the containers
 	docker-compose build
 
 prepare: ## Runs backend commands
-	$(MAKE) composer-install
+	composer install
 
 migrate: ## Runs backend commands
 	docker exec -it fizz-buzz-php-symfony symfony console doctrine:database:create

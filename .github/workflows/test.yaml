@@ -16,6 +16,8 @@ jobs:
         run:  make build
       - name: Start docker-compose
         run: make start
+      - name: Composer install
+        run: make prepare
       - uses: GuillaumeFalourd/wait-sleep-action@v1
         with:
           time: '60' # for 60 seconds
