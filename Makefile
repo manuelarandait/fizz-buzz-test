@@ -26,7 +26,7 @@ test: ## Runs backend commands
 	docker exec fizz-buzz-php-symfony php bin/phpunit
 
 run: ## starts the Symfony development server
-	docker exec -it fizz-buzz-php-symfony symfony serve -d
+	docker exec -T fizz-buzz-php-symfony symfony serve -d
 
 ssh-be: ## bash into the be container
 	docker exec -it fizz-buzz-php-symfony sh

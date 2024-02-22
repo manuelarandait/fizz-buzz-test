@@ -1,15 +1,23 @@
-name: CI
+name: CI-fizz-buzz
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build-test:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: php-actions/composer@v6
-      - run: make build
-      - run: make start
-      - run: make create-database-test
-      - run: make test
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build docker container
+        run:  make build
+      - name: Start docker-compose
+        run: make start
+      - name: Create test database
+        run: make create-database-test
+      - run: docker ps
+      - name: Exec test
+        run: make test
