@@ -16,6 +16,9 @@ jobs:
         run:  make build
       - name: Start docker-compose
         run: make start
+      - uses: GuillaumeFalourd/wait-sleep-action@v1
+        with:
+          time: '60' # for 60 seconds
       - name: Create test database
         run: make create-database-test
       - run: docker ps
