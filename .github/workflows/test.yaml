@@ -11,4 +11,7 @@ jobs:
       - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
       - uses: php-actions/composer@v6
       - run: echo "Composer dependencies have been installed"
+      - run: make build
+      - run: make start
+      - run: make test
       - run: ./vendor/bin/phpunit
