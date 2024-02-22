@@ -11,4 +11,5 @@ jobs:
       - uses: php-actions/composer@v6
       - run: make build
       - run: make start
+      - run: make create-database-test
       - run: make test
