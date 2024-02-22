@@ -23,7 +23,7 @@ create-database-test: ## Runs backend commands
 	docker exec -it fizz-buzz-php-symfony symfony console doctrine:schema:update --force --env=test
 
 test: ## Runs backend commands
-	docker exec -it fizz-buzz-php-symfony php bin/phpunit
+	docker exec fizz-buzz-php-symfony php bin/phpunit
 
 run: ## starts the Symfony development server
 	docker exec -it fizz-buzz-php-symfony symfony serve -d
