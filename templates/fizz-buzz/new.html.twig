@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+    <div class="container mx-auto">
+        <div class="my-10 p-5">
+            <div class="row">
+                <div class="col">
+                    <div class="input-group input-group-lg">
+                        {{ form_widget(form.min) }}
+                        {{ form_errors(form.min) }}
+                    </div>
+                </div>
+                <div class="col" >
+                    <div class="input-group input-group-lg">
+                        {{ form_widget(form.max) }}
+                        {{ form_errors(form.max) }}
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center p-5">
+                <input type="submit" value="Calcular" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+    {% if data is defined and data != false %}
+        <div class="container mx-auto">
+            <div class="my-10 p-5">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-floating">
+                            <textarea class="form-control" disabled>
+                                {{ data.fizzBuzz }}
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+{% endblock %}

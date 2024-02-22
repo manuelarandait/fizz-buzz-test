@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  php:
+    container_name: fizz-buzz-php-symfony
+    build:
+      context: ./docker
+    ports:
+      - 8000:8000
+      - 8001:8001
+    volumes:
+      - ./:/appdata/www
+    depends_on:
+      - database
+
+  database:
+    container_name: fizz-buzz-database
+    image: mysql:latest
+    ports:
+      - 3336:3306
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: fizz-buzz
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+
+volumes:
+  db_data:
