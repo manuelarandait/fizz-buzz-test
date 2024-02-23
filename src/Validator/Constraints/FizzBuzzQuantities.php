@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraint;
 {
     public string $message = 'El valor máximo debe ser mayor que el valor mínimo.';
 
-    public function getTargets()
+    public function getTargets(): array|string
     {
         return self::CLASS_CONSTRAINT;
     }
