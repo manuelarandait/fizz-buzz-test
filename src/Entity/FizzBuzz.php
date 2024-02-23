@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\FizzBuzzRepository;
 use Doctrine\ORM\Mapping as ORM;
 use App\Validator\Constraints as FizzBuzzAssert;
 
 #[FizzBuzzAssert\FizzBuzzQuantities]
 #[ORM\Entity(repositoryClass: FizzBuzzRepository::class)]
+#[ApiResource]
 class FizzBuzz
 {
     #[ORM\Id]
