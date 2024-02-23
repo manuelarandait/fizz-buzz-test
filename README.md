@@ -53,6 +53,7 @@ make analyse
 ## Testing:
 ```bash
 # Ejecución de los test
+make create-database-test
 make test
 ```
 
