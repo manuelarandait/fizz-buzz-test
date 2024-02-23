@@ -12,26 +12,27 @@ restart: ## Restart the containers
 build: ## Rebuilds all the containers
 	docker-compose build
 
-prepare: ## Runs backend commands
+prepare: ## Exec composer install
 	composer install
 
-migrate: ## Runs backend commands
+create-database: ## Migrate database
 	docker exec -it fizz-buzz-php-symfony symfony console doctrine:database:create
 
-create-database-test: ## Runs backend commands
-	docker exec fizz-buzz-php-symfony symfony console doctrine:database:create --env=test
-	docker exec fizz-buzz-php-symfony symfony console doctrine:schema:update --force --env=test
+migrate: ## Migrate database
+	docker exec fizz-buzz-php-symfony symfony console doctrine:migrations:migrate
 
-test: ## Runs backend commands
+create-database-test: ## Create test database, and migrate
+	docker exec fizz-buzz-php-symfony symfony console doctrine:database:create --env=test
+	docker exec fizz-buzz-php-symfony symfony console doctrine:migrations:migrate --env=test
+
+test: ## Runs test
 	docker exec fizz-buzz-php-symfony php bin/phpunit
 
 run: ## starts the Symfony development server
-	docker exec -T fizz-buzz-php-symfony symfony serve -d
+	docker exec -it fizz-buzz-php-symfony symfony serve -d
 
 ssh-be: ## bash into the be container
 	docker exec -it fizz-buzz-php-symfony sh
 
-# Backend commands
-composer-install: ## Installs composer dependencies
-	docker exec composer install --no-interaction
-# End backend commands
+analyse: ## Clean php code
+	vendor/bin/phpstan analyse

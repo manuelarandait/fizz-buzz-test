@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Form\FizzBuzzFormType;
 use App\Service\CreateFizzBuzzService;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class FizzBuzzController extends AbstractController
 {
     #[Route('/desafio/fizz/buzz', name: 'app_fizz_buzz_show')]
-    public function createFizzBuzz(Request $request, EntityManagerInterface $em, CreateFizzBuzzService $createFizzBuzzService): Response
+    public function createFizzBuzz(Request $request, CreateFizzBuzzService $createFizzBuzzService): Response
     {
         $form = $this->createForm(FizzBuzzFormType::class);
 

@@ -45,7 +45,7 @@ class FizzBuzzFormType extends AbstractType
         ;
     }
 
-    public function validateMaxGreaterThanMin($value, ExecutionContextInterface $context): void
+    public function validateMaxGreaterThanMin(int $value, ExecutionContextInterface $context): void
     {
         $formData = $context->getRoot()->getData();
 

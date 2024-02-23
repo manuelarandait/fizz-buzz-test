@@ -4,7 +4,9 @@ namespace App\Entity;
 
 use App\Repository\FizzBuzzRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Validator\Constraints as FizzBuzzAssert;
 
+#[FizzBuzzAssert\FizzBuzzQuantities]
 #[ORM\Entity(repositoryClass: FizzBuzzRepository::class)]
 class FizzBuzz
 {

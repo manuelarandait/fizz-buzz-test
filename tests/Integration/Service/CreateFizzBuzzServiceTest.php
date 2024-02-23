@@ -7,9 +7,12 @@ use App\Repository\FizzBuzzRepository;
 use App\Service\CreateFizzBuzzService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Zenstruck\Foundry\Test\ResetDatabase;
 
 class CreateFizzBuzzServiceTest extends KernelTestCase
 {
+    use ResetDatabase;
+
     const expectedResponse = '1 ,2 ,Fizz ,4 ,Buzz ,Fizz ,7 ,8 ,Fizz ,Buzz ,11 ,Fizz ,13 ,14 ,FizzBuzz ,16 ,17 ,Fizz ,19 ,Buzz ,Fizz ,22 ,23 ,Fizz ,Buzz ,26 ,Fizz ,28 ,29 ,FizzBuzz ,';
 
     private EntityManagerInterface $entityManager;
@@ -23,7 +26,7 @@ class CreateFizzBuzzServiceTest extends KernelTestCase
             ->getManager();
     }
 
-    public function testCreateFizzBuzzServiceIsCorrect()
+    public function testCreateFizzBuzzServiceIsCorrect(): void
     {
         $service = self::getContainer()->get(CreateFizzBuzzService::class);
         assert($service instanceof CreateFizzBuzzService);
@@ -38,7 +41,7 @@ class CreateFizzBuzzServiceTest extends KernelTestCase
         $this->entityManager->persist($fizzBuzz);
         $this->entityManager->flush();
 
-        $lastOne = $this->entityManager->getRepository(FizzBuzz::class)->findOneBy([], ['id' => 'DESC'], 1);
+        $lastOne = $this->entityManager->getRepository(FizzBuzz::class)->findOneBy([], ['id' => 'DESC']);
 
         $this->assertEquals($fizzBuzzService->getFizzBuzz(), $lastOne->getFizzBuzz());
     }
