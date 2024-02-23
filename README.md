@@ -18,21 +18,22 @@
 </ol>
 
 <h3>Para levantar el proyecto, basta con seguir estos pequeños pasos: </h3>
->### `make build`
->### `make start`
->### `make prepare`
->### `make create-database`
->### `make migrate`
+> ### `make build`
+> ### `make start`
+> ### `make prepare`
+> ### `make create-database`
+> Si al ejecutar el create-database, aparece un error de que la base de datos ya está creada, pasamos directamente a la siguiente instrucción:
+> ### `make migrate`
 
 Con estos pasos tenemos nuestros contenedores creados y levantados, ejecutado el composer install,
 y la base de datos preparada para empezar a trabajar.
 
 <h3>Para levantar el server de development de Symfony: </h3>
->### `make run`
+> ### `make run`
 > 
 > Como extra, podemos ejecutar un pequeño análisis del codigo ejecutando:  </h3>
 > ### `make analyse`
  
-<h3>Testing </h3>
+<h3>Testing: </h3>
 > ### `make test`
 

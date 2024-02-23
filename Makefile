@@ -35,4 +35,4 @@ ssh-be: ## bash into the be container
 	docker exec -it fizz-buzz-php-symfony sh
 
 analyse: ## Clean php code
-	docker exec -it vendor/bin/phpstan analyse
+	docker exec -it fizz-buzz-php-symfony vendor/bin/phpstan analyse

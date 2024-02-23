@@ -24,5 +24,5 @@ jobs:
       - name: Create test database
         run: make create-database-test
       - run: docker ps
-      - name: Exec test
+      - name: Execute test
         run: make test
